@@ -1,0 +1,37 @@
+
+
+const arr = [
+    { id: 1, name: "章三" },
+    { id: 2, name: "里斯" },
+    { id: 3, name: "王武" },
+    { id: 4, name: "高硫" },
+    { id: 5, name: "胡琪" },
+    { id: 6, name: "郭八" },
+    { id: 7, name: "照旧" },
+    { id: 8, name: "注视" },
+];
+
+// 排序指定 前四个的顺序必须是：照旧、胡琪、王武、里斯，其他随机排序
+const output = [
+    { id: 7, name: "照旧" },
+    { id: 5, name: "胡琪" },
+    { id: 3, name: "王武" },
+    { id: 2, name: "里斯" },
+    // 不要求顺序
+];
+
+const arrKV = {};
+arr.forEach(x => arrKV[x.name] = x);
+const sort = ["照旧", "胡琪", "王武", "里斯"];
+
+const referArr: any[] = [];
+sort.forEach(x => {
+    const item = arrKV[x];
+    if (item) {
+        referArr.push(item);
+        delete arrKV[x];
+    }
+});
+const otherArr = Object.values(arrKV);
+const retArr = referArr.concat(otherArr);
+console.log(retArr);
